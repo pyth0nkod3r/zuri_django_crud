@@ -20,18 +20,16 @@ class Post(models.Model):
         get_user_model(), on_delete=models.CASCADE, related_name="blog_posts"
     )
     body = models.TextField()
-
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default="draft"
     )
 
 
-class Meta:
-    ordering = ("-publish",)
+    class Meta:
+        ordering = ("-publish",)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
