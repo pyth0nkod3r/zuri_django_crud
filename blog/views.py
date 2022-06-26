@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.views.generic import( 
     ListView, CreateView, DetailView, UpdateView,
     )
-from .models import Post 
+from django.urls import reverse_lazy
+from .models import Post
+
 
 # Create your views here.
 class PostListView(ListView):
